@@ -1,0 +1,166 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.github.mervyn</groupId>
+  <artifactId>strutsSpringHibernate-template</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>strutsSpringHibernate-template Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+  	
+  	<junit.version>4.12</junit.version>
+  	<struts.version>2.3.20</struts.version>
+  	<spring.version>4.2.3.RELEASE</spring.version>
+  	<hibernate.version>5.0.3.Final</hibernate.version>
+  	<c3p0.version>0.9.1.2</c3p0.version>
+  	<slf4j.version>1.7.13</slf4j.version>
+  	<logback.version>1.1.3</logback.version>
+  	<mysql.version>5.1.37</mysql.version>
+  	
+  	
+  </properties>
+  
+  
+  
+  <dependencies>
+  	<!-- junit测试依赖  -->
+  	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit.version}</version>
+		<scope>test</scope>
+	</dependency>
+	
+	
+	<!-- B:strutsSpringHibernate依赖 -->
+	<!-- B:struts2依赖 -->
+	<dependency>
+		<groupId>org.apache.struts</groupId>
+		<artifactId>struts2-core</artifactId>
+		<version>${struts.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.apache.struts</groupId>
+		<artifactId>struts2-spring-plugin</artifactId>
+		<version>${struts.version}</version>
+	</dependency>
+	<!-- E:struts2依赖 -->
+	
+	<!-- B:spring依赖 -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-beans</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-orm</artifactId>
+		<version>${spring.version}</version>
+	</dependency>
+	
+	<!-- E:spring依赖 -->
+	
+	<!-- B:hibernate依赖 -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-core</artifactId>
+		<version>${hibernate.version}</version>
+	</dependency>
+	<!-- E:hibernate依赖 -->
+	<!-- E:strutsSpringHibernate依赖 -->
+    
+    <!-- B:c3p0数据源 -->
+    <dependency>
+		<groupId>c3p0</groupId>
+		<artifactId>c3p0</artifactId>
+		<version>${c3p0.version}</version>
+	</dependency>
+	<!-- E:c3p0数据库源  -->
+	
+	<!-- slf4j -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>${slf4j.version}</version>
+	</dependency>
+	
+	<!-- B:logback日志框架 -->
+	<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-core</artifactId>
+		<version>${logback.version}</version>
+	</dependency>
+	<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-classic</artifactId>
+		<version>${logback.version}</version>
+	</dependency>
+	<!-- E:logback日志框架 -->
+	
+	<!-- mysql -->
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>${mysql.version}</version>
+	</dependency>
+	
+	
+  </dependencies>
+  
+  
+  <build>
+    <finalName>strutsSpringHibernate-template</finalName>
+    <plugins>
+    	<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.3</version>
+			<configuration>
+				<encoding>utf8</encoding>
+				<source>1.8</source>
+				<target>1.8</target>
+			</configuration>
+    	</plugin>
+    	
+    	<plugin>
+    		<groupId>org.mortbay.jetty</groupId>
+			<artifactId>maven-jetty-plugin</artifactId>
+			<version>7.0.0.pre5</version>
+			<configuration>
+				<!-- 热部署时间 -->
+				<scanIntervalSeconds>5</scanIntervalSeconds>
+				<webAppSourceDirectory>${basedir}/src/main/webapp</webAppSourceDirectory>
+			</configuration>
+    	</plugin>
+    </plugins>
+  </build>
+</project>

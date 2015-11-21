@@ -1,0 +1,10 @@
+D:\workspace\strutsSpringHibernate-template\src\main\java\org\github\mervyn\SSH\dao\IUserDao.java
+D:\workspace\strutsSpringHibernate-template\src\main\java\org\github\mervyn\SSH\serviceImpl\UserService.java
+D:\workspace\strutsSpringHibernate-template\src\main\java\org\github\mervyn\SSH\daoImpl\BaseDao.java
+D:\workspace\strutsSpringHibernate-template\src\main\java\org\github\mervyn\SSH\domain\Page.java
+D:\workspace\strutsSpringHibernate-template\src\main\java\org\github\mervyn\SSH\daoImpl\UserDao.java
+D:\workspace\strutsSpringHibernate-template\src\main\java\org\github\mervyn\SSH\action\UserAction.java
+D:\workspace\strutsSpringHibernate-template\src\main\java\org\github\mervyn\SSH\entity\User.java
+D:\workspace\strutsSpringHibernate-template\src\main\java\org\github\mervyn\SSH\domain\PageRequest.java
+D:\workspace\strutsSpringHibernate-template\src\main\java\org\github\mervyn\SSH\service\IUserService.java
+D:\workspace\strutsSpringHibernate-template\src\main\java\org\github\mervyn\SSH\dao\IBaseDao.java

@@ -1,0 +1,4 @@
+org\github\mervyn\SSH\dao\UserDaoTest.class
+org\github\mervyn\SSH\service\UserServiceTest.class
+org\github\mervyn\SSH\util\BaseTransactionalTest.class
+org\github\mervyn\SSH\util\BaseNoTransactionalTest.class

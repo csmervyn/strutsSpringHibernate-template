@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  
+	该配置文件中log的输出是到输出到console，对于本应用的代码是debug级别，对于其他的是info级别。 
+ -->
+<configuration>
+	<!-- 是负责写日志的组件。<appender>有两个必要属性name和class。name指定appender名称，
+		class指定appender的全限定名。
+		把日志添加到控制台
+		 -->
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- 对日志进行格式化。 -->
+		<encoder>
+			<pattern>%d [%thread] %-5level %40logger{40} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 用来设置某一个包或者具体的某一个类的日志打印级别、以及指定<appender>。<logger>仅有
+		一个name属性，一个可选的level和一个可选的addtivity属性。 -->
+	<logger name="org.github.mervyn.SSH.daoImpl" level="debug"></logger>
+	
+	<!-- 但是它是根logger。只有一个属性:level -->
+	<root level="info">
+		<appender-ref ref="Console" />
+	</root>
+</configuration>

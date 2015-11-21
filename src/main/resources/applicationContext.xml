@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+	<!-- B:配置数据源 -->
+	<!-- B:导入数据源配置的资源文件 -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+			<property name="user" value="${jdbc.user}"></property>
+			<property name="password" value="${jdbc.password}"></property>
+			<property name="driverClass" value="${jdbc.driverClass}"></property>
+			<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+			
+			<property name="initialPoolSize" value="${jdbc.initPoolSize}"></property>
+			<property name="maxPoolSize" value="${jdbc.maxPoolSize}"></property>
+	</bean>
+	<!-- E:配置数据源 -->
+	<!-- E:导入数据源配置的资源文件 -->
+	
+	<!-- B:配置Hibernate的SessionFactory实例 :通过spring提供的LocalSessionFactoryBean进行配置-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+			<!-- 配置数据源属性 -->
+			<property name="dataSource" ref="dataSource"></property>
+			<!-- 配置hibernate配置文件的位置及名称 -->
+			<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+			<!-- 配置hibernate映射文件的位置及名称，可以使用通配符,有两种方式 -->
+			<!-- 方法1 
+			<property name="mappingLocations" value="classpath:com/aimeng/security/domain/*.hbm.xml"></property>
+			-->
+			<!-- 方法2 -->
+			<property name="packagesToScan">
+				<array>
+					<value>org.github.mervyn.SSH.entity</value>
+				</array>
+			</property>
+	</bean>
+	<!-- E:配置Hibernate的SessionFactory实例 :通过spring提供的LocalSessionFactoryBean进行配置-->
+	
+	<!-- B:配置spring事物式声明 -->
+	<!-- 1、配置事物管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+			<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 2、启用事物注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<!-- D:配置spring事物式声明 -->
+	
+	<!-- 启用注解 -->
+	<context:annotation-config />
+	<!-- dao层扫描器  -->
+	<context:component-scan base-package="org.github.mervyn.SSH.daoImpl" />
+	<!-- service层扫描器 -->
+	<context:component-scan base-package="org.github.mervyn.SSH.serviceImpl" />
+	<!-- action层扫描器  -->
+	<context:component-scan base-package="org.github.mervyn.SSH.action" />
+</beans>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+		 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
+		 id="WebApp_ID" version="3.1">
+	
+	<display-name>strutsSpringHibernate-template</display-name>
+	<welcome-file-list>
+		<welcome-file>/addUser.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- B:配置中文编码问题的过滤器 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+		   	<param-name>encoding</param-name>
+		   	<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- E:配置中文编码问题的过滤器 -->
+
+	<!-- B:配置Spring配置文件的名称和位置 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:applicationContext.xml
+		</param-value>
+	</context-param>
+	<!-- E:配置Spring配置文件的名称和位置 -->
+	
+	<!-- B:启动IOC容器的ServletContextListener -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- E:启动IOC容器的ServletContextListener -->
+	
+	<!-- B:StrutsPrepareFilter -->
+	<filter>
+		<filter-name>strutsPrepareFilter</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>strutsPrepareFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+  	<!-- E:StrutsPrepareFilter -->
+  
+  
+  	
+	<!-- B:StrutsExecuteFilter -->
+	<filter>
+		<filter-name>strutsExecuteFilter</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsExecuteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>strutsExecuteFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- E:StrutsExecuteFilter -->
+</web-app>
